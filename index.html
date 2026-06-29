@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>喻斯彦</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{position:relative;width:100%;height:100%;background:linear-gradient(180deg,#c8dce8 0%,#dde8e0 35%,#c8dcc0 60%,#8ab46e 100%);overflow:hidden}
+.sky{position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(180deg,#b8d0e0 0%,#d4e0d8 60%,#d8e4cc 100%)}
+.sunlight{position:absolute;top:8%;left:20%;width:200px;height:200px;background:radial-gradient(circle,rgba(255,245,220,0.7) 0%,rgba(255,240,210,0.3) 30%,transparent 70%);border-radius:50%;animation:sunlightPulse 6s ease-in-out infinite}
+@keyframes sunlightPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+.trees-bg{position:absolute;top:30%;left:0;right:0;height:40%}
+.tree{position:absolute;bottom:0;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:80px solid #3a5a2a}
+.tree::after{content:"";position:absolute;top:40px;left:-10px;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:50px solid #2e4820}
+.tree:nth-child(1){left:5%}
+.tree:nth-child(2){left:15%;border-bottom-color:#4a6a3a;border-bottom-width:100px}
+.tree:nth-child(2)::after{border-bottom-color:#3a5828}
+.tree:nth-child(3){left:70%;border-bottom-color:#3a5a2a;border-bottom-width:70px}
+.tree:nth-child(3)::after{border-bottom-color:#2e4820;top:30px}
+.tree:nth-child(4){left:80%;border-bottom-color:#4a6a3a;border-bottom-width:90px}
+.tree:nth-child(4)::after{border-bottom-color:#3a5828}
+.tree:nth-child(5){left:90%;border-bottom-color:#3a5528;border-bottom-width:75px}
+.tree:nth-child(5)::after{border-bottom-color:#2a4020}
+.tree:nth-child(6){left:58%;border-bottom-color:#455a32;border-bottom-width:85px}
+.tree:nth-child(6)::after{border-bottom-color:#354a25}
+.grass-layer{position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(180deg,#6b9e4a 0%,#4a7c34 30%,#2d5a1e 70%,#1e4012 100%);border-radius:60% 80% 0 0 / 20% 15% 0 0}
+.grass-blades{position:absolute;bottom:0;left:0;right:0;height:40%}
+.blade{position:absolute;bottom:0;width:3px;background:linear-gradient(180deg,#7cb84a,#4a8030);border-radius:50% 50% 0 0;transform-origin:bottom center}
+.blade:nth-child(odd){background:linear-gradient(180deg,#8cc458,#528a35)}
+.blade:nth-child(3n){width:2px;background:linear-gradient(180deg,#90c860,#5a9438)}
+.flower{position:absolute;width:10px;height:10px;background:radial-gradient(circle,#fff8e0,#f0d878);border-radius:50%;box-shadow:-6px -2px 0 -1px #f8e8a0,6px -2px 0 -1px #f8e8a0,-4px 5px 0 -1px #f0d870,4px 5px 0 -1px #f0d870,0px -6px 0 -1px #fff0c0}
+.flower::after{content:"";position:absolute;top:50%;left:50%;width:5px;height:5px;background:#e8a830;border-radius:50%;transform:translate(-50%,-50%)}
+.bear-wrapper{position:absolute;bottom:22%;left:50%;transform:translateX(-50%);z-index:10;cursor:pointer;transition:transform .15s ease}
+.bear-wrapper:hover{transform:translateX(-50%) scale(1.06)}
+.bear-wrapper:active{transform:translateX(-50%) scale(.96)}
+.bear-wrapper.waving{animation:bearWave .6s ease-in-out}
+.bear-entry{animation:bearRollIn 2s cubic-bezier(.25,.1,.25,1) forwards}
+@keyframes bearRollIn{0%{transform:translateX(-50%) translateX(-300px) rotate(-720deg);opacity:0}60%{transform:translateX(-50%) translateX(-40px) rotate(-90deg);opacity:1}80%{transform:translateX(-50%) translateX(0) rotate(15deg)}90%{transform:translateX(-50%) translateX(0) rotate(-5deg)}100%{transform:translateX(-50%) translateX(0) rotate(0deg)}}
+@keyframes bearWave{0%{transform:translateX(-50%) rotate(0)}15%{transform:translateX(-50%) rotate(-8deg) scale(1.04)}30%{transform:translateX(-50%) rotate(6deg) scale(1.03)}45%{transform:translateX(-50%) rotate(-5deg)}60%{transform:translateX(-50%) rotate(3deg)}75%{transform:translateX(-50%) rotate(-2deg)}100%{transform:translateX(-50%) rotate(0)}}
+.bear{position:relative;width:140px;height:170px}
+.bear-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100px;height:90px;background:linear-gradient(180deg,#f2b8c8 0%,#e898b0 100%);border-radius:50px 50px 40px 40px;box-shadow:inset 0 -8px 12px rgba(180,100,120,.3)}
+.bear-belly{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);width:55px;height:45px;background:#fdd8e4;border-radius:28px 28px 22px 22px}
+.bear-head{position:absolute;top:5px;left:50%;transform:translateX(-50%);width:90px;height:80px;background:linear-gradient(180deg,#f4c0d0 0%,#e898b0 100%);border-radius:50%;box-shadow:inset 0 -4px 8px rgba(180,100,120,.25)}
+.bear-ear{position:absolute;top:-8px;width:32px;height:34px;background:#e898b0;border-radius:50%;box-shadow:inset 0 -2px 4px rgba(160,90,110,.3)}
+.bear-ear.left{left:2px}.bear-ear.right{right:2px}
+.bear-ear::after{content:"";position:absolute;top:7px;left:6px;width:18px;height:18px;background:#fcd4dc;border-radius:50%}
+.bear-eye{position:absolute;top:30px;width:14px;height:16px;background:#3a2820;border-radius:50%}
+.bear-eye.left{left:22px}.bear-eye.right{right:22px}
+.bear-eye::after{content:"";position:absolute;top:3px;left:4px;width:5px;height:5px;background:#fff;border-radius:50%}
+.bear-blush{position:absolute;top:40px;width:16px;height:10px;background:rgba(255,150,160,.5);border-radius:50%}
+.bear-blush.left{left:12px}.bear-blush.right{right:12px}
+.bear-nose{position:absolute;top:43px;left:50%;transform:translateX(-50%);width:14px;height:10px;background:#3a2820;border-radius:50%}
+.bear-mouth{position:absolute;top:52px;left:50%;transform:translateX(-50%);width:24px;height:8px;border-bottom:2px solid #3a2820;border-radius:0 0 12px 12px}
+.bear-arm{position:absolute;top:50px;width:28px;height:55px;background:linear-gradient(180deg,#e898b0,#dc80a0);border-radius:14px 14px 10px 10px;transform-origin:top center}
+.bear-arm.left{left:-15px;transform:rotate(15deg)}.bear-arm.right{right:-15px;transform:rotate(-15deg)}
+.bear-wrapper.waving .bear-arm.right{animation:armWave .6s ease-in-out}
+@keyframes armWave{0%{transform:rotate(-15deg)}20%{transform:rotate(-55deg) translateY(-8px)}40%{transform:rotate(-35deg) translateY(-4px)}60%{transform:rotate(-50deg) translateY(-6px)}80%{transform:rotate(-20deg)}100%{transform:rotate(-15deg)}}
+.bear-leg{position:absolute;bottom:-10px;width:32px;height:28px;background:#dc80a0;border-radius:50%}
+.bear-leg.left{left:10px}.bear-leg.right{right:10px}
+.bear-leg::after{content:"";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:16px;height:10px;background:#f0b8c8;border-radius:50%}
+.speech-bubble{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-15px);background:#fff;border-radius:18px;padding:10px 22px;font-size:18px;font-weight:600;color:#5a3848;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:opacity .35s ease,transform .35s cubic-bezier(.34,1.56,.64,1);z-index:20}
+.speech-bubble.show{opacity:1;transform:translateX(-50%) translateY(-20px)}
+.speech-bubble::after{content:"";position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff}
+.compliment-bubble{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-15px);background:linear-gradient(135deg,#fff8f8,#fff0f4);border:2px solid #f0c8d8;border-radius:20px;padding:12px 24px;font-size:19px;font-weight:700;color:#c86080;white-space:nowrap;box-shadow:0 4px 20px rgba(200,120,150,.18);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .35s cubic-bezier(.34,1.56,.64,1);z-index:20}
+.compliment-bubble.show{opacity:1;transform:translateX(-50%) translateY(-20px)}
+.compliment-bubble::after{content:"";position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #f0c8d8}
+.hint{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);font-size:14px;color:rgba(255,255,255,.7);letter-spacing:1px;animation:hintFloat 2s ease-in-out infinite;z-index:5}
+@keyframes hintFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+@media(max-width:480px){.bear{width:110px;height:135px}.bear-body{width:78px;height:72px;border-radius:39px 39px 32px 32px}.bear-belly{width:44px;height:36px}.bear-head{width:72px;height:64px}.bear-ear{width:26px;height:28px;top:-6px}.bear-ear::after{width:14px;height:14px;top:5px;left:5px}.bear-eye{width:11px;height:13px;top:24px}.bear-eye.left{left:18px}.bear-eye.right{right:18px}.bear-blush{width:13px;height:8px;top:32px}.bear-blush.left{left:9px}.bear-blush.right{right:9px}.bear-nose{top:35px;width:12px;height:8px}.bear-mouth{top:42px;width:20px}.bear-arm{width:22px;height:44px;top:40px}.bear-arm.left{left:-10px}.bear-arm.right{right:-10px}.bear-leg{width:26px;height:22px;bottom:-8px}.speech-bubble{font-size:15px;padding:8px 16px}.compliment-bubble{font-size:16px;padding:10px 18px}}
+</style>
+</head>
+<body>
+<div class="scene">
+<div class="sky"></div><div class="sunlight"></div>
+<div class="trees-bg"><div class="tree"></div><div class="tree"></div><div class="tree"></div><div class="tree"></div><div class="tree"></div><div class="tree"></div></div>
+<div class="grass-layer"></div><div class="grass-blades" id="grassBlades"></div>
+<div class="bear-wrapper bear-entry" id="bearWrapper">
+<div class="bear">
+<div class="bear-head"><div class="bear-ear left"></div><div class="bear-ear right"></div><div class="bear-eye left"></div><div class="bear-eye right"></div><div class="bear-blush left"></div><div class="bear-blush right"></div><div class="bear-nose"></div><div class="bear-mouth"></div></div>
+<div class="bear-body"><div class="bear-belly"></div></div>
+<div class="bear-arm left"></div><div class="bear-arm right"></div>
+<div class="bear-leg left"></div><div class="bear-leg right"></div>
+</div>
+<div class="speech-bubble" id="nameBubble">喻斯彦</div>
+<div class="compliment-bubble" id="complimentBubble"></div>
+</div>
+<div class="hint">点我试试看～</div>
+</div>
+<script>
+const compliments=['好可爱','好聪明','早晚会有钱','很独立','马上就能回国','即将要被宴请','运气超好','被很多人喜欢','烦恼都会消失','永远不迷路'];
+let ci=0;
+const bw=document.getElementById('bearWrapper');
+const nb=document.getElementById('nameBubble');
+const cb=document.getElementById('complimentBubble');
+const gb=document.getElementById('grassBlades');
+for(let i=0;i<80;i++){const d=document.createElement('div');d.className='blade';d.style.left=(i*1.3+Math.random()*2)+'%';d.style.height=(25+Math.random()*55)+'px';d.style.transform='rotate('+(-10+Math.random()*20)+'deg)';d.style.animationDelay=(Math.random()*3)+'s';gb.appendChild(d);}
+const sc=document.querySelector('.scene');
+for(let i=0;i<12;i++){const f=document.createElement('div');f.className='flower';f.style.left=(5+Math.random()*88)+'%';f.style.bottom=(2+Math.random()*20)+'%';f.style.transform='scale('+(0.6+Math.random()*0.8)+')';sc.appendChild(f);}
+setTimeout(function(){nb.classList.add('show');},2300);
+bw.addEventListener('click',function(){nb.classList.remove('show');bw.classList.remove('waving');void bw.offsetWidth;bw.classList.add('waving');cb.textContent=compliments[ci];cb.classList.add('show');ci=(ci+1)%compliments.length;setTimeout(function(){bw.classList.remove('waving');},600);});
+</script>
+</body>
+</html>
