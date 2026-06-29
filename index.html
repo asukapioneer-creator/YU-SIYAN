@@ -66,7 +66,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:"PingFang SC","Micr
 .compliment-bubble{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-15px);background:linear-gradient(135deg,#fff8f8,#fff0f4);border:2px solid #f0c8d8;border-radius:20px;padding:12px 24px;font-size:19px;font-weight:700;color:#c86080;white-space:nowrap;box-shadow:0 4px 20px rgba(200,120,150,.18);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .35s cubic-bezier(.34,1.56,.64,1);z-index:20}
 .compliment-bubble.show{opacity:1;transform:translateX(-50%) translateY(-20px)}
 .compliment-bubble::after{content:"";position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #f0c8d8}
-.hint{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);font-size:14px;color:rgba(255,255,255,.7);letter-spacing:1px;animation:hintFloat 2s ease-in-out infinite;z-index:5}
+.hint{position:absolute;top:30%;left:50%;transform:translateX(-50%);font-size:14px;color:rgba(255,255,255,.7);letter-spacing:1px;animation:hintFloat 2s ease-in-out infinite;z-index:5}
 @keyframes hintFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
 @media(max-width:480px){.bear{width:110px;height:135px}.bear-body{width:78px;height:72px;border-radius:39px 39px 32px 32px}.bear-belly{width:44px;height:36px}.bear-head{width:72px;height:64px}.bear-ear{width:26px;height:28px;top:-6px}.bear-ear::after{width:14px;height:14px;top:5px;left:5px}.bear-eye{width:11px;height:13px;top:24px}.bear-eye.left{left:18px}.bear-eye.right{right:18px}.bear-blush{width:13px;height:8px;top:32px}.bear-blush.left{left:9px}.bear-blush.right{right:9px}.bear-nose{top:35px;width:12px;height:8px}.bear-mouth{top:42px;width:20px}.bear-arm{width:22px;height:44px;top:62px}.bear-arm.left{left:8px}.bear-arm.right{right:8px}.bear-leg{width:26px;height:22px;bottom:-8px}.speech-bubble{font-size:15px;padding:8px 16px}.compliment-bubble{font-size:16px;padding:10px 18px}}
 </style>
@@ -89,7 +89,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:"PingFang SC","Micr
 <div class="hint">点我试试看～</div>
 </div>
 <script>
-const compliments=['好可爱','好聪明','早晚会有钱','很独立','马上就能回国','即将要被宴请','运气超好','被很多人喜欢','烦恼都会消失','永远不迷路'];
+const compliments=['好可爱！','好聪明！','早晚会有钱！','很独立！','马上就能回国！','即将要被宴请！','运气超好！','被很多人喜欢！','烦恼都会消失！','永远不迷路！'];
 let ci=0;
 const bw=document.getElementById('bearWrapper');
 const nb=document.getElementById('nameBubble');
@@ -98,7 +98,7 @@ const gb=document.getElementById('grassBlades');
 for(let i=0;i<80;i++){const d=document.createElement('div');d.className='blade';d.style.left=(i*1.3+Math.random()*2)+'%';d.style.height=(25+Math.random()*55)+'px';d.style.transform='rotate('+(-10+Math.random()*20)+'deg)';d.style.animationDelay=(Math.random()*3)+'s';gb.appendChild(d);}
 const sc=document.querySelector('.scene');
 for(let i=0;i<12;i++){const f=document.createElement('div');f.className='flower';f.style.left=(5+Math.random()*88)+'%';f.style.bottom=(2+Math.random()*20)+'%';f.style.transform='scale('+(0.6+Math.random()*0.8)+')';sc.appendChild(f);}
-setTimeout(function(){nb.classList.add('show');},2300);
+setTimeout(function(){nb.classList.add('show');bw.classList.remove('bear-entry');},2300);
 bw.addEventListener('click',function(){nb.classList.remove('show');bw.classList.remove('waving');void bw.offsetWidth;bw.classList.add('waving');cb.textContent=compliments[ci];cb.classList.add('show');ci=(ci+1)%compliments.length;setTimeout(function(){bw.classList.remove('waving');},600);});
 </script>
 </body>
